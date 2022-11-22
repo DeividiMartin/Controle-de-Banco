@@ -42,6 +42,7 @@ public class OperaBanco {
                     }
                     case 3:{
                     System.out.print("PROGRAMA FINALIZADO COM SUCESSO!");
+                    System.exit(0);
                     }
                 }
             }
@@ -72,6 +73,7 @@ public class OperaBanco {
                     }
                     case 3:{
                         System.out.print("\n\nPROGRAMA FINALIZADO COM SUCESSO!");
+                        System.exit(0);
                     }
                    
                 }
@@ -115,6 +117,7 @@ public class OperaBanco {
                         }
                         case 2:{
                         System.out.print("\n\nPROGRAMA FINALIZADO COM SUCESSO!");
+                        System.exit(0);
                         }
                     }
                 }
@@ -140,6 +143,7 @@ public class OperaBanco {
                     }
                     case 4:{
                     System.out.print("\n\nPROGRAMA FINALIZADO COM SUCESSO!");
+                    System.exit(0);
                     
                     }
                 }
@@ -169,13 +173,37 @@ public class OperaBanco {
                     
                     System.out.print("Digite o valor que deseja depositar:");
                     Double deposito = scan.nextDouble();
-                    client.conta.saldo = client.conta.saldo+deposito;
-                    cont.saldo = cont.saldo+deposito;
-
-                    System.out.print("Deposito efetuado com sucesso!");
-
-                    System.out.print("\n\n[1]Realizar outro deposito\n[2]Voltar para o menu.   [3]Sair.\nEscolha uma das opções: ");
+                    if(deposito<0){
+                        System.out.println("Valor Invalido!\n[1]Tentar novamente.   [2]Cadastrar cliente.  [3]Voltar para o menu   [3]Sair.\nEscolha a opção desejada: ");
                         int select = scanint.nextInt();
+
+
+                        switch(select){
+                            case 1:{
+                            depositoCliente();
+                            break;
+                            }
+                            case 2:{
+                            cadastrarCliente();
+                            break;
+                            }
+                            case 3 :{
+                            menuSelect();
+                            break;
+                            }
+                            case 4:{
+                            System.out.print("PROGRAMA FINALIZADO COM SUCESSO!");
+                            System.exit(0);
+                            }
+                        }
+                    }    
+                        client.conta.saldo = client.conta.saldo+deposito;
+                        cont.saldo = cont.saldo+deposito;
+
+                        System.out.print("Deposito efetuado com sucesso!\n\nDados atualizados:\nCliente:"+client.nome+".\nSaldo: "+client.conta.saldo+"R$.");
+
+                        System.out.print("\n\n[1]Realizar outro deposito\n[2]Voltar para o menu.   [3]Sair.\nEscolha uma das opções: ");
+                            int select = scanint.nextInt();
 
                     switch(select){
                         case 1:{
@@ -187,6 +215,7 @@ public class OperaBanco {
                         }
                         case 3:{
                         System.out.print("PROGRAMA FINALIZADO COM SUCESSO!");
+                        System.exit(0);
                         break;
                         }
                     }
@@ -216,6 +245,7 @@ public class OperaBanco {
                 }
                 case 4:{
                 System.out.print("PROGRAMA FINALIZADO COM SUCESSO!");
+                System.exit(0);
                 }
             }
         }
@@ -243,8 +273,33 @@ public class OperaBanco {
                 for (Conta cont : contaList) {
                     if(checkAgencia==cont.agencia){
                         achado1 = true;
-                        System.out.print("Digite o valor que deseja transerir: ");
+                        System.out.print("Digite o valor que deseja transerir: "); 
                         Double valor = scan.nextDouble();
+
+                        if(valor<0){
+                            System.out.println("Valor Invalido!\n[1]Tentar novamente.   [2]Cadastrar cliente.  [3]Voltar para o menu   [3]Sair.\nEscolha a opção desejada: ");
+                            int select = scanInt.nextInt();
+    
+    
+                            switch(select){
+                                case 1:{
+                                depositoCliente();
+                                break;
+                                }
+                                case 2:{
+                                cadastrarCliente();
+                                break;
+                                }
+                                case 3 :{
+                                menuSelect();
+                                break;
+                                }
+                                case 4:{
+                                System.out.print("PROGRAMA FINALIZADO COM SUCESSO!");
+                                System.exit(0);
+                                }
+                            }
+                        }    
                         
                         if (valor > client.conta.saldo){
                             System.out.print("Cliente não possui saldo suficiente.\n[1]Tentar novamente   [2]Voltar para o menu.   [3]Sair.\nEscolha uma das opções: ");
@@ -259,6 +314,7 @@ public class OperaBanco {
                                 }
                                 case 3:{
                                 System.out.print("PROGRAMA FINALIZADO COM SUCESSO!");
+                                System.exit(0);
                                 }    
                             }
                         }// if caso valor for maior
@@ -278,7 +334,7 @@ public class OperaBanco {
                                         contRecebe.saldo = contRecebe.saldo + valor;
                                         clientRecebe.conta.saldo = clientRecebe.conta.saldo + valor;
 
-                                    System.out.print("TRANSFERENCIA REALIZADA COM SUCESSO!");
+                                    System.out.print("TRANSFERENCIA REALIZADA COM SUCESSO!\n\nDados atualizados:\nNome:"+client.nome+".\nSaldo: "+client.conta.saldo+"R$.\n\nCliente:"+clientRecebe.nome+"\nSaldo: "+clientRecebe.conta.saldo+"R$.");
                                     System.out.print("\n\n[1]Realizar outra transferencia\n[2]Voltar para o menu.   [3]Sair.\nEscolha uma das opções: ");
 
                                     int selec1 = scanInt.nextInt();
@@ -292,6 +348,7 @@ public class OperaBanco {
                                         }
                                         case 3:{
                                         System.out.print("PROGRAMA FINALIZADO COM SUCESSO!");
+                                        System.exit(0);
                                         
                                         }
                                     }
@@ -316,6 +373,7 @@ public class OperaBanco {
                                 }
                                 case 3:{
                                 System.out.print("PROGRAMA FINALIZADO COM SUCESSO!");
+                                System.exit(0);
                                 break;}
                                 }
 
@@ -339,6 +397,7 @@ public class OperaBanco {
                             }
                             case 3:{
                             System.out.print("PROGRAMA FINALIZADO COM SUCESSO!");
+                            System.exit(0);
                             }
                         }
                 }
@@ -360,6 +419,7 @@ public class OperaBanco {
                     }
                     case 3:{
                     System.out.print("PROGRAMA FINALIZADO COM SUCESSO!");
+                    System.exit(0);
                     }
                 }
             }
@@ -369,10 +429,10 @@ public class OperaBanco {
 
     public void mostrarClientes(){
         int i = 0;
-        System.out.println("CLIENTES CADASTRADOS\n"+clientList+"");
+        System.out.println("LISTA DE CLIENTES:\n\n");
         for (Cliente clientes : clientList) {
             i = i+1;
-            System.out.printf("Cliente "+i+"\n\nNome :"+clientes.nome+"\nCPF: "+clientes.cpf+"\nProfissão: "+clientes.profissao+"\nAgencia: "+clientes.conta.agencia+"\nSaldo: "+clientes.conta.saldo+"\n\n\n");     
+            System.out.printf("Cliente "+i+"\n\nNome :"+clientes.nome+"\nCPF: "+clientes.cpf+"\nProfissão: "+clientes.profissao+"\nAgencia: "+clientes.conta.agencia+"\nSaldo: "+clientes.conta.saldo+" R$\n\n\n");     
         }
     }
 
@@ -397,7 +457,7 @@ public class OperaBanco {
 
                 for (Conta cont : contaList) {
                     if (checkAgencia==cont.agencia){
-                        System.out.print("Nome: "+client.nome +"\nProfissão: "+ client.profissao +"\nAgencia: " +cont.agencia + "\nSaldo: "+cont.saldo);
+                        System.out.print("Nome: "+client.nome +"\nProfissão: "+ client.profissao +"\nAgencia: " +cont.agencia + "\nSaldo: "+cont.saldo+"R$.");
                 
                         System.out.print("\n\n[1]Ver dados de outro cliente\n[2]Voltar para o menu.   [3]Sair.\nEscolha uma das opções: ");
                         int select = scanint.nextInt();
@@ -413,6 +473,7 @@ public class OperaBanco {
                             }
                             case 3:{
                             System.out.print("PROGRAMA FINALIZADO COM SUCESSO!");
+                            System.exit(0);
                             }
                         }
                     }   
@@ -435,6 +496,7 @@ public class OperaBanco {
                     }
                     case 3:{
                     System.out.print("PROGRAMA FINALIZADO COM SUCESSO!");
+                    System.exit(0);
                     }
                 }
             }
@@ -466,13 +528,15 @@ public class OperaBanco {
             }
             case 5:{
             mostrarDados();
-            break;}
+            break;
+            }
             case 6:{
-
-                mostrarClientes();
+            mostrarClientes();
+            break;
             }
             case 7:{
             System.out.print("\nPrograma finalizado com sucesso!");
+            System.exit(0);
             }
 
         }
